@@ -1,18 +1,20 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
+import { FETCH_ALL, CREATE, UPDATE, DELETE } from 'constants/actionTypes';
 
-import * as api from '../api/index.js';
+import * as api from 'api/index.js';
 
 export const getTable = () => async (dispatch) => {
   try {
     const { data } = await api.fetchTable();
-
-    dispatch({ type: FETCH_ALL, payload: data });
+    setTimeout(() => {
+      dispatch({ type: FETCH_ALL, payload: data });
+    },3000)
   } catch (error) {
     console.log(error.message);
   }
 };
 
 export const createTableItem = (item) => async (dispatch) => {
+
   try {
     const { data } = await api.createTableItem(item);
 
@@ -23,6 +25,7 @@ export const createTableItem = (item) => async (dispatch) => {
 };
 
 export const updateTableItem = (id, item) => async (dispatch) => {
+
   try {
     const { data } = await api.updateTableItem(id, item);
 

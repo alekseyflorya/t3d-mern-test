@@ -2,20 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
-import Table from './components/Table/Table';
-import Form from './components/Form/Form';
-import { getTable } from './actions/table';
+import Table from 'components/Table/Table';
+import Form from 'components/Form/Form';
+import { getTable } from 'actions/table';
 import useStyles from './styles';
 
 const App = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [currentId, setCurrentId] = useState(0);
+
   const dispatch = useDispatch();
   const classes = useStyles();
 
   useEffect(() => {
     dispatch(getTable());
-  }, []);
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,10 +35,19 @@ const App = () => {
         <Container>
           <Grid container justify="space-between" alignItems="stretch" spacing={3}>
             <Grid item xs={12} sm={12}>
-              <Table setCurrentId={setCurrentId} handleClickOpen={handleClickOpen} handleClose={handleClose} />
+              <Table
+                setCurrentId={setCurrentId}
+                handleClickOpen={handleClickOpen}
+                handleClose={handleClose}
+              />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <Form currentId={currentId} setCurrentId={setCurrentId} open={open} handleClose={handleClose} />
+              <Form
+                currentId={currentId}
+                setCurrentId={setCurrentId}
+                open={open}
+                handleClose={handleClose}
+              />
             </Grid>
           </Grid>
         </Container>

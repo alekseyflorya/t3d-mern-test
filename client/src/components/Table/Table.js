@@ -12,10 +12,11 @@ import {
 } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { deleteTableItem } from '../../actions/table';
+import { deleteTableItem } from 'actions/table';
 
 import TableItem from './TableItem/TableItem';
 import useStyles from './styles';
+import { Preloader } from 'components/Preloader'
 
 const Table = ({ setCurrentId, handleClickOpen }) => {
   const table = useSelector((state) => state.table);
@@ -58,7 +59,7 @@ const Table = ({ setCurrentId, handleClickOpen }) => {
   const rowCount = table.length;
 
   return (
-    <>
+    !table.length ? <Preloader /> : (<>
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         <TableContainer component={Paper}>
           <TableBox className={classes.table} aria-label="simple table">
@@ -93,7 +94,7 @@ const Table = ({ setCurrentId, handleClickOpen }) => {
         <Button variant="contained" color="primary" size="large" onClick={handleClickOpen}>Create</Button>
         <Button variant="contained" color="secondary" size="large" onClick={deleteItems}>Delete</Button>
       </Grid>
-    </>
+    </>)
   );
 };
 

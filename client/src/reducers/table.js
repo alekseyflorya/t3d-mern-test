@@ -1,4 +1,4 @@
-import { CREATE, UPDATE, DELETE, FETCH_ALL } from '../constants/actionTypes';
+import { CREATE, UPDATE, DELETE, FETCH_ALL } from 'constants/actionTypes';
 
 export default (table = [], action) => {
   switch (action.type) {

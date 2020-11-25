@@ -4,10 +4,10 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { reducers } from './reducers';
-import App from './App';
-import NotFound from './components/NotFound'
-import './index.css';
+import { reducers } from 'reducers';
+import App from 'App';
+import NotFound from 'components/NotFound'
+import 'index.css';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
